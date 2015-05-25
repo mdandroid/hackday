@@ -1,2 +1,2 @@
 # hackday
-This is for our android hackday events
+Hi Guys, this is for our android hackday events
