@@ -1,9 +1,13 @@
 <resources>
-    <string name="app_name">Blue Team</string>
+    <string name="app_name">My Identity</string>
     <string name="title_activity_main">MainActivity</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="main_services">Services:</string>
+
     <string name="action_settings">Settings</string>
-    <string name="title_activity_profile">ProfileActivity</string>
-    <string name="title_activity_history">HistoryActivity</string>
+    <string name="title_activity_profile">My Profile</string>
+    <string name="title_activity_history">My Activity log</string>
+    <string name="facebook">Log in with Facebook</string>
+    <string name="mypost">Log in with MyPost</string>
+    <string name="no_id">Sign up</string>
 </resources>
