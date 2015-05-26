@@ -87,6 +87,14 @@
                   android:layout_height="match_parent"
                   android:orientation="vertical"
                   android:visibility="gone">
+
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:layout_marginLeft="15dp"
+                   android:layout_marginRight="15dp"
+                   android:src="@drawable/welcome"/>
+
         <AutoCompleteTextView
                 android:id="@+id/email"
                 android:layout_width="match_parent"
@@ -110,13 +118,17 @@
 
         <Button
                 android:id="@+id/sign_in_button"
-                style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/round_button"
                 android:textColor="@color/ap_white"
                 android:text="@string/action_sign_in"
+                android:textSize="13sp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:textStyle="bold"/>
 
     </LinearLayout>
