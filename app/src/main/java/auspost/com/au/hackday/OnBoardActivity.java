@@ -2,9 +2,18 @@ package auspost.com.au.hackday;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 
 public class OnBoardActivity extends Activity {
@@ -12,16 +21,87 @@ public class OnBoardActivity extends Activity {
     private Button facebookBtn;
     private Button myPostBtn;
     private Button signUpBtn;
+    private LinearLayout loginSection;
+    private LinearLayout onBoardSelection;
+    private AutoCompleteTextView email;
+    private EditText password;
+    private ProgressBar progress;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboard);
+        loginSection = (LinearLayout) findViewById(R.id.login_section);
+        onBoardSelection = (LinearLayout) findViewById(R.id.onboard_selection);
+        email = (AutoCompleteTextView) findViewById(R.id.email);
+        progress = (ProgressBar) findViewById(R.id.progress);
+
+        password = (EditText) findViewById(R.id.password);
+        password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+                if (id == R.id.login || id == EditorInfo.IME_NULL) {
+                    attemptLogin();
+                    return true;
+                }
+                return false;
+            }
+        });
+
 
         registerFacebookBtn();
         registerMyPostBtn();
         registerSignUp();
     }
+
+    private void attemptLogin() {
+        email.setError(null);
+        password.setError(null);
+
+        // Store values at the time of the login attempt.
+        String emailStr = email.getText().toString();
+        String passwordStr = password.getText().toString();
+
+        boolean cancel = false;
+        View focusView = null;
+
+        if (!TextUtils.isEmpty(emailStr) && !isPasswordValid(passwordStr)) {
+            password.setError(getString(R.string.error_invalid_password));
+            focusView = password;
+            cancel = true;
+        }
+
+        if (TextUtils.isEmpty(emailStr)) {
+            email.setError(getString(R.string.error_field_required));
+            focusView = email;
+            cancel = true;
+        } else if (!isEmailValid(emailStr)) {
+            email.setError(getString(R.string.error_invalid_email));
+            focusView = email;
+            cancel = true;
+        }
+
+        if (cancel) {
+            focusView.requestFocus();
+        } else {
+            showProgress(true);
+        }
+
+    }
+
+    private void showProgress(boolean show) {
+        progress.setVisibility(show ? View.VISIBLE : View.GONE);
+    }
+
+    private boolean isEmailValid(String email) {
+        return email.contains("@");
+    }
+
+    private boolean isPasswordValid(String password) {
+        return password.length() > 4;
+    }
+
 
     private void registerSignUp() {
         signUpBtn = (Button) findViewById(R.id.no_id);
@@ -50,10 +130,20 @@ public class OnBoardActivity extends Activity {
         facebookBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OnBoardActivity.this, MainActivity.class);
-                startActivity(intent);
+                onBoardSelection.setVisibility(View.GONE);
+                loginSection.setVisibility(View.VISIBLE);
+//                Intent intent = new Intent(OnBoardActivity.this, MainActivity.class);
+//                startActivity(intent);
             }
         });
+    }
+
+    private class FacebookAuthTask extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            return null;
+        }
     }
 }
 
