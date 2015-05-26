@@ -26,8 +26,7 @@ import java.util.Map;
 public class OnBoardActivity extends Activity {
 
     private Button facebookBtn;
-    private Button myPostBtn;
-    private Button signUpBtn;
+    private Button signInBtn;
     private LinearLayout loginSection;
     private LinearLayout onBoardSelection;
     private AutoCompleteTextView email;
@@ -50,7 +49,13 @@ public class OnBoardActivity extends Activity {
         onBoardSelection = (LinearLayout) findViewById(R.id.onboard_selection);
         email = (AutoCompleteTextView) findViewById(R.id.email);
         progress = (ProgressBar) findViewById(R.id.progress);
-
+        signInBtn = (Button) findViewById(R.id.sign_in_button);
+        signInBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                attemptLogin();
+            }
+        });
         password = (EditText) findViewById(R.id.password);
         password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -65,8 +70,6 @@ public class OnBoardActivity extends Activity {
 
 
         registerFacebookBtn();
-        registerMyPostBtn();
-        registerSignUp();
     }
 
     private void attemptLogin() {
@@ -118,29 +121,6 @@ public class OnBoardActivity extends Activity {
         return password.length() > 4;
     }
 
-
-    private void registerSignUp() {
-        signUpBtn = (Button) findViewById(R.id.no_id);
-        signUpBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(OnBoardActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    private void registerMyPostBtn() {
-        myPostBtn = (Button) findViewById(R.id.mypost);
-        myPostBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(OnBoardActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-
     private void registerFacebookBtn() {
         facebookBtn = (Button) findViewById(R.id.facebook);
         facebookBtn.setOnClickListener(new View.OnClickListener() {
@@ -188,6 +168,7 @@ public class OnBoardActivity extends Activity {
                 User user = UserUtils.toUser(databaseManager.getUser(emailStr));
                 intent.putExtra("user", user);
                 startActivity(intent);
+                finish();
             } else {
                 result = new AsyncTaskResult<>(false);
             }

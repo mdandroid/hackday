@@ -17,7 +17,7 @@ public class User implements Parcelable {
     public List<String> addresses = new ArrayList<>();
 
     public User() {
-        
+
     }
 
     public User(String name, String phone, String email, Date dateOfBirth, String driverLicense, String passportNumber, List<String> addresses) {
