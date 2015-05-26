@@ -42,7 +42,11 @@ public class MainActivity extends ActionBarActivity {
         profilePageButton();
         verificationPercentage();
 
-        formsListAdapter.update("COAN", "Green", true);
+        if (user.changeAddress.equalsIgnoreCase("true")) {
+            formsListAdapter.update("COAN", "Green", true);
+        } else {
+            formsListAdapter.update("COAN", "Amber", false);
+        }
         formsListAdapter.update("Mypost", "Amber", false);
         formsListAdapter.update("MRSO", "Red", false);
         formsListAdapter.update("Passport", "Black", false);

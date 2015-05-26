@@ -14,7 +14,7 @@
     <string name="no_id">Sign up</string>
 
     <string name="status_green">Good to go</string>
-    <string name="status_amber">Mobile phone number required</string>
+    <string name="status_amber">New Address required</string>
     <string name="status_orange">Mobile phone number, Email address and DOB</string>
     <string name="status_black">Mobile phone number, Email address, DOB and Facial image required</string>
 </resources>

@@ -30,6 +30,7 @@ public class DatabaseManager {
     public static final String ADS = "ads";
     public static final String PWD = "pwd";
     public static final String VER = "ver";
+    public static final String CHADD = "chadd";
     private final SharedPreferences database;
 
     public DatabaseManager(Context context) {
@@ -46,6 +47,7 @@ public class DatabaseManager {
         safePutValue(username, ADS, values.get(ADS));
         safePutValue(username, PWD, values.get(PWD));
         safePutValue(username, VER, values.get(VER));
+        safePutValue(username, CHADD, values.get(CHADD));
     }
 
     public String getName(String username) {
@@ -71,6 +73,10 @@ public class DatabaseManager {
 
     public String getDriverLicenseNumber(String username) {
         return database.getString(username + "_" + DL, null);
+    }
+
+    public String getChangeAddress(String username) {
+        return database.getString(username + "_" + CHADD, null);
     }
 
     public String getVerificationPercentage(String username) {
@@ -104,6 +110,7 @@ public class DatabaseManager {
         user.put(PN, getPassportNumber(username));
         user.put(ADS, getAddresses(username));
         user.put(VER, getVerificationPercentage(username));
+        user.put(CHADD, getChangeAddress(username));
         return user;
     }
 

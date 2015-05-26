@@ -142,6 +142,7 @@ public class OnBoardActivity extends Activity {
         user1.put(DatabaseManager.PHONE, "04129384938");
         user1.put(DatabaseManager.EMAIL, "tony.stark@avengers.com");
         user1.put(DatabaseManager.VER, "20");
+        user1.put(DatabaseManager.CHADD, "false");
         user1.put(DatabaseManager.ADS, "111 Bourke Street,VIC Melbourne:80 Collin Street,VIC Melbourne");
         databaseManager.save("tony.stark@avengers.com", user1);
 
@@ -154,6 +155,7 @@ public class OnBoardActivity extends Activity {
         user2.put(DatabaseManager.PHONE, "0419283949");
         user2.put(DatabaseManager.EMAIL, "john.smith@example.com");
         user2.put(DatabaseManager.VER, "30");
+        user1.put(DatabaseManager.CHADD, "false");
         user2.put(DatabaseManager.ADS, "90 Bourke Street,VIC Melbourne:180 Collin Street,VIC Melbourne");
         databaseManager.save("john.smith@example.com", user2);
     }
