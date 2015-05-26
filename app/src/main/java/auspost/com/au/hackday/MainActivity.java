@@ -13,6 +13,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import auspost.com.au.hackday.model.User;
+import auspost.com.au.hackday.persistence.DatabaseManager;
+import auspost.com.au.hackday.utils.UserUtils;
 
 import java.io.InputStream;
 
@@ -24,11 +27,14 @@ public class MainActivity extends ActionBarActivity {
     private ListView formListView;
     private ImageButton profilePageButton;
     private TextView profilePer;
+    private DatabaseManager databaseManager;
+    private User user;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        user = getIntent().getParcelableExtra("user");
         setContentView(R.layout.activity_main);
         formsListAdapter = new ServicesListAdapter(this.getApplicationContext());
         formListView = (ListView) findViewById(R.id.list_forms);
@@ -36,11 +42,20 @@ public class MainActivity extends ActionBarActivity {
         profilePageButton();
         verificationPercentage();
 
+        formsListAdapter.update("COAN", "Green", true);
+        formsListAdapter.update("Mypost", "Amber", false);
+        formsListAdapter.update("MRSO", "Red", false);
+        formsListAdapter.update("Passport", "Black", false);
+        formsListAdapter.update("Postal Vote", "Green", true);
+        formsListAdapter.update("Land Title", "Red", false);
+        formsListAdapter.update("Mypost Card", "Amber", false);
+        formsListAdapter.update("Concession Card", "Red", false);
+        formsListAdapter.update("MPDM", "Green", true);
     }
 
     private void verificationPercentage() {
         profilePer = (TextView) findViewById(R.id.verifiedPer);
-        profilePer.setText("20%");
+        profilePer.setText(user.verificationPercentage + "%");
     }
 
     @Override
