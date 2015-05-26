@@ -28,20 +28,22 @@ public class FormsListAdapter extends BaseAdapter {
         update("Mypost", "Amber");
         update("MRSO", "Red");
         update("Passport", "Black");
+        update("Postal Vote", "Green");
+        update("Land Title", "Red");
+        update("Mypost Card", "Amber");
+        update("Concession Card", "Red");
+        update("MPDM", "Green");
     }
 
     public void update(String serviceName, String serviceStatus) {
-        boolean found = false;
         for (int i = 0; i < services.size(); i++) {
             if (services.get(i).name.compareTo(serviceName) == 0) {
-                found = true;
+                this.services.remove(i);
             }
         }
-        if (!found) {
-            Service service = new Service(serviceName, serviceStatus);
-            this.services.add(service);
-            notifyDataSetChanged();
-        }
+        Service service = new Service(serviceName, serviceStatus);
+        this.services.add(service);
+        notifyDataSetChanged();
     }
 
 
@@ -67,6 +69,16 @@ public class FormsListAdapter extends BaseAdapter {
         serviceName = (TextView) rowView.findViewById(R.id.textService);
         serviceName.setText(services.get(position).name);
         serviceStatus = (TextView) rowView.findViewById(R.id.textStatus);
+        String status = services.get(position).status;
+        if (status.equalsIgnoreCase("green")) {
+            serviceStatus.setTextColor(context.getResources().getColor(R.color.green));
+        } else if (status.equalsIgnoreCase("amber")){
+            serviceStatus.setTextColor(context.getResources().getColor(R.color.orange));
+        } else if (status.equalsIgnoreCase("red")){
+            serviceStatus.setTextColor(context.getResources().getColor(R.color.red));
+        } else if (status.equalsIgnoreCase("black")){
+            serviceStatus.setTextColor(context.getResources().getColor(R.color.black));
+        }
         serviceStatus.setText(services.get(position).status);
         return rowView;
     }

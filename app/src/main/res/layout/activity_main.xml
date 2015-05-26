@@ -14,6 +14,7 @@
             android:layout_alignParentTop="true"
             android:orientation="vertical"
             android:padding="5dp">
+
         <TextView
                 android:id="@+id/mainForms"
                 android:text="@string/main_services"
@@ -28,6 +29,7 @@
                 android:layout_height="fill_parent">
 
             <ListView
+                    android:scrollbars="none"
                     android:id="@+id/list_forms"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"

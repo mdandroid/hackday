@@ -6,5 +6,8 @@
     </style>
 
     <color name="black">#000</color>
+    <color name="green">#32CD32</color>
+    <color name="red">#FF5252</color>
+    <color name="orange">#FF6D3F</color>
 
 </resources>
