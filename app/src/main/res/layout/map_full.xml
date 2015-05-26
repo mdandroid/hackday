@@ -17,6 +17,6 @@
             android:padding="10dp"
             android:onClick="changeAddress"
             android:id="@+id/address"
-             00android:layout_gravity="left|bottom"
+            android:layout_gravity="left|bottom"
             android:clickable="true"/>
 </FrameLayout>
