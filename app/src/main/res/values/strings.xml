@@ -10,6 +10,7 @@
     <string name="facebook">REGISTER WITH FACEBOOK</string>
     <string name="welcome_to">Welcome to</string>
     <string name="mypost">MyPost</string>
+    <string name="login">Log in </string>
     <string name="register_with_email">Register with your email</string>
     <string name="no_id">Sign up</string>
 </resources>
