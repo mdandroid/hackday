@@ -52,6 +52,7 @@
         <Button android:id="@+id/facebook"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
+                android:layout_marginTop="13dp"
                 android:background="@drawable/round_button"
                 android:textColor="@color/ap_white"
                 android:textSize="13sp"
@@ -69,6 +70,15 @@
                   android:textColor="@color/ap_red"
                   android:gravity="center"
                   android:text="@string/register_with_email"/>
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="70dp"
+                  android:textSize="12sp"
+                  android:layout_gravity="center"
+                  android:textColor="@color/black"
+                  android:gravity="center"
+                  android:text="@string/login"/>
 
     </LinearLayout>
 
