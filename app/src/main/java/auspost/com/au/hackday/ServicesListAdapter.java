@@ -1,6 +1,7 @@
 package auspost.com.au.hackday;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,6 +81,14 @@ public class ServicesListAdapter extends BaseAdapter {
         } else {
             serviceActive.setImageDrawable(context.getResources().getDrawable(R.mipmap.incomplete));
         }
+        rowView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, NewAddressActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
         return rowView;
     }
 }
