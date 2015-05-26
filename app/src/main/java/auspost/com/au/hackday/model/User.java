@@ -14,13 +14,15 @@ public class User implements Parcelable {
     public Date dateOfBirth;
     public String driverLicense;
     public String passportNumber;
+    public String verificationPercentage;
+    public String changeAddress;
     public List<String> addresses = new ArrayList<>();
 
     public User() {
 
     }
 
-    public User(String name, String phone, String email, Date dateOfBirth, String driverLicense, String passportNumber, List<String> addresses) {
+    public User(String name, String phone, String email, Date dateOfBirth, String driverLicense, String passportNumber, List<String> addresses, String verificationPercentage, String changeAddress) {
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -28,6 +30,8 @@ public class User implements Parcelable {
         this.driverLicense = driverLicense;
         this.passportNumber = passportNumber;
         this.addresses = addresses;
+        this.verificationPercentage = verificationPercentage;
+        this.changeAddress = changeAddress;
     }
 
     @Override
@@ -44,6 +48,8 @@ public class User implements Parcelable {
         dest.writeLong(dob);
         dest.writeString(driverLicense);
         dest.writeString(passportNumber);
+        dest.writeString(verificationPercentage);
+        dest.writeString(changeAddress);
         dest.writeList(addresses);
     }
 
@@ -59,9 +65,11 @@ public class User implements Parcelable {
             Date dob = dobLong != -1 ? new Date(dobLong) : null;
             String dl = source.readString();
             String pn = source.readString();
+            String ver = source.readString();
+            String chadd = source.readString();
             ArrayList<String> addresses = new ArrayList<>();
             source.readList(addresses, null);
-            User user = new User(name, email, phone, dob, dl, pn, addresses);
+            User user = new User(name, email, phone, dob, dl, pn, addresses, ver, chadd);
             return user;
         }
 

@@ -17,6 +17,8 @@ public class UserUtils {
         user.dateOfBirth = (Date) userMap.get(DatabaseManager.DOB);
         user.driverLicense = (String) userMap.get(DatabaseManager.DL);
         user.passportNumber = (String) userMap.get(DatabaseManager.PN);
+        user.verificationPercentage = (String) userMap.get(DatabaseManager.VER);
+        user.changeAddress = (String) userMap.get(DatabaseManager.CHADD);
         user.addresses = (List<String>) userMap.get(DatabaseManager.ADS);
         return user;
     }
