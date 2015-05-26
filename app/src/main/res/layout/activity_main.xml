@@ -16,9 +16,12 @@
             android:padding="5dp">
         <TextView
                 android:id="@+id/mainForms"
-                android:text="@string/main_forms"
+                android:text="@string/main_services"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20sp"
+                android:textSize="40sp"
+                android:textAlignment="center"/>
 
         <RelativeLayout
                 android:layout_width="fill_parent"

@@ -17,7 +17,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        formsListAdapter = new FormsListAdapter();
+        formsListAdapter = new FormsListAdapter(this.getApplicationContext());
         formListView = (ListView) findViewById(R.id.list_forms);
         formListView.setAdapter(formsListAdapter);
     }

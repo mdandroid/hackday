@@ -2,7 +2,6 @@
     <string name="app_name">My Identity</string>
     <string name="title_activity_main">MainActivity</string>
 
-    <string name="main_forms">Forms:</string>
     <string name="main_services">Services:</string>
 
     <string name="action_settings">Settings</string>
