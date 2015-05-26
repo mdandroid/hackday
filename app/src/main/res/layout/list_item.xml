@@ -7,12 +7,12 @@
                   android:orientation="vertical"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
+                  android:background="@color/ap_white"
             android:padding="10dp">
         <TextView
                 android:id="@+id/heading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/ap_white"
                 android:textSize="20dp"
                 />
         <TextView
@@ -20,7 +20,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
-                android:textColor="@color/ap_white"
                 />
     </LinearLayout>
 </RelativeLayout >
