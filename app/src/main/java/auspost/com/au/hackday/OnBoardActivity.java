@@ -14,6 +14,11 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import auspost.com.au.hackday.persistence.AsyncTaskResult;
+import auspost.com.au.hackday.persistence.DatabaseManager;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class OnBoardActivity extends Activity {
@@ -26,12 +31,19 @@ public class OnBoardActivity extends Activity {
     private AutoCompleteTextView email;
     private EditText password;
     private ProgressBar progress;
+    private DatabaseManager databaseManager;
+    private String emailStr;
+    private String passwordStr;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboard);
+        databaseManager = new DatabaseManager(this);
+
+        populateFakeUsers();
+
         loginSection = (LinearLayout) findViewById(R.id.login_section);
         onBoardSelection = (LinearLayout) findViewById(R.id.onboard_selection);
         email = (AutoCompleteTextView) findViewById(R.id.email);
@@ -60,8 +72,8 @@ public class OnBoardActivity extends Activity {
         password.setError(null);
 
         // Store values at the time of the login attempt.
-        String emailStr = email.getText().toString();
-        String passwordStr = password.getText().toString();
+        emailStr = email.getText().toString();
+        passwordStr = password.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
@@ -86,6 +98,8 @@ public class OnBoardActivity extends Activity {
             focusView.requestFocus();
         } else {
             showProgress(true);
+            FacebookAuthTask task = new FacebookAuthTask();
+            task.execute();
         }
 
     }
@@ -132,17 +146,48 @@ public class OnBoardActivity extends Activity {
             public void onClick(View v) {
                 onBoardSelection.setVisibility(View.GONE);
                 loginSection.setVisibility(View.VISIBLE);
-//                Intent intent = new Intent(OnBoardActivity.this, MainActivity.class);
-//                startActivity(intent);
             }
         });
     }
 
-    private class FacebookAuthTask extends AsyncTask<Void, Void, Void> {
+    private void populateFakeUsers() {
+        Map<String, String> user1 = new HashMap<>();
+        user1.put(DatabaseManager.NAME, "Tony Stark");
+        user1.put(DatabaseManager.PWD, "pepperpotts");
+        user1.put(DatabaseManager.DOB, "12751200000");
+        user1.put(DatabaseManager.DL, "01293982");
+        user1.put(DatabaseManager.PN, "GA19283909");
+        user1.put(DatabaseManager.PHONE, "04129384938");
+        user1.put(DatabaseManager.EMAIL, "tony.stark@avengers.com");
+        user1.put(DatabaseManager.ADS, "111 Bourke Street,VIC Melbourne:80 Collin Street,VIC Melbourne");
+        databaseManager.save("tony.stark@avengers.com", user1);
+    }
+
+    private class FacebookAuthTask extends AsyncTask<Void, Void, AsyncTaskResult<Boolean>> {
 
         @Override
-        protected Void doInBackground(Void... params) {
-            return null;
+        protected AsyncTaskResult<Boolean> doInBackground(Void... params) {
+            AsyncTaskResult<Boolean> result;
+            String password = databaseManager.getPassword(emailStr);
+            if (password != null && password.equals(passwordStr)) {
+                result = new AsyncTaskResult<>(true);
+            } else {
+                result = new AsyncTaskResult<>(false);
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(AsyncTaskResult<Boolean> result) {
+            if (result.getResult()) {
+                showProgress(false);
+                Intent intent = new Intent(OnBoardActivity.this, MainActivity.class);
+                startActivity(intent);
+            } else {
+                email.setError(getString(R.string.error_invalid_login));
+                email.requestFocus();
+                showProgress(false);
+            }
         }
     }
 }

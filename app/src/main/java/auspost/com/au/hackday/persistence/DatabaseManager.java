@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +28,7 @@ public class DatabaseManager {
     public static final String DL = "dl";
     public static final String PN = "pn";
     public static final String ADS = "ads";
+    public static final String PWD = "pwd";
     private final SharedPreferences database;
 
     public DatabaseManager(Context context) {
@@ -41,6 +43,7 @@ public class DatabaseManager {
         safePutValue(username, DL, values.get(DL));
         safePutValue(username, PN, values.get(PN));
         safePutValue(username, ADS, values.get(ADS));
+        safePutValue(username, PWD, values.get(PWD));
     }
 
     public String getName(String username) {
@@ -72,6 +75,10 @@ public class DatabaseManager {
         return database.getString(username + "_" + PN, null);
     }
 
+    public String getPassword(String username) {
+        return database.getString(username + "_" + PWD, null);
+    }
+
     public List<String> getAddresses(String username) {
         List<String> addresses = null;
         String addressesStr = database.getString(username + "_" + ADS, null);
@@ -81,9 +88,21 @@ public class DatabaseManager {
         return addresses;
     }
 
+    public Map<String, Object> getUser(String username) {
+        Map<String, Object> user = new HashMap<>();
+        user.put(NAME, getName(username));
+        user.put(EMAIL, getEmail(username));
+        user.put(PHONE, getPhone(username));
+        user.put(DOB, getDateOfBirth(username));
+        user.put(DL, getDriverLicenseNumber(username));
+        user.put(PN, getPassportNumber(username));
+        user.put(ADS, getAddresses(username));
+        return user;
+    }
+
     private void safePutValue(String key, String attr, String value) {
         if (value != null && !value.trim().equals("")) {
-            database.edit().putString(key + "_" + attr, value);
+            database.edit().putString(key + "_" + attr, value).apply();
         }
     }
 }
