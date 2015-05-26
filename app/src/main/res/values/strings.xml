@@ -4,4 +4,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="facebook">Log in with Facebook</string>
+    <string name="mypost">Log in with MyPost</string>
+    <string name="no_id">Sign up</string>
 </resources>
