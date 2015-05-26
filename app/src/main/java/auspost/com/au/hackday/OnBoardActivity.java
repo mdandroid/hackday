@@ -14,8 +14,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import auspost.com.au.hackday.model.User;
 import auspost.com.au.hackday.persistence.AsyncTaskResult;
 import auspost.com.au.hackday.persistence.DatabaseManager;
+import auspost.com.au.hackday.utils.UserUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -161,6 +163,17 @@ public class OnBoardActivity extends Activity {
         user1.put(DatabaseManager.EMAIL, "tony.stark@avengers.com");
         user1.put(DatabaseManager.ADS, "111 Bourke Street,VIC Melbourne:80 Collin Street,VIC Melbourne");
         databaseManager.save("tony.stark@avengers.com", user1);
+
+        Map<String, String> user2 = new HashMap<>();
+        user2.put(DatabaseManager.NAME, "John Smith");
+        user2.put(DatabaseManager.PWD, "password");
+        user2.put(DatabaseManager.DOB, "12751200000");
+        user2.put(DatabaseManager.DL, "120398102");
+        user2.put(DatabaseManager.PN, "EA23987429");
+        user2.put(DatabaseManager.PHONE, "0419283949");
+        user2.put(DatabaseManager.EMAIL, "john.smith@example.com");
+        user2.put(DatabaseManager.ADS, "90 Bourke Street,VIC Melbourne:180 Collin Street,VIC Melbourne");
+        databaseManager.save("john.smith@example.com", user2);
     }
 
     private class FacebookAuthTask extends AsyncTask<Void, Void, AsyncTaskResult<Boolean>> {
@@ -171,6 +184,10 @@ public class OnBoardActivity extends Activity {
             String password = databaseManager.getPassword(emailStr);
             if (password != null && password.equals(passwordStr)) {
                 result = new AsyncTaskResult<>(true);
+                Intent intent = new Intent(OnBoardActivity.this, MainActivity.class);
+                User user = UserUtils.toUser(databaseManager.getUser(emailStr));
+                intent.putExtra("user", user);
+                startActivity(intent);
             } else {
                 result = new AsyncTaskResult<>(false);
             }
@@ -179,11 +196,7 @@ public class OnBoardActivity extends Activity {
 
         @Override
         protected void onPostExecute(AsyncTaskResult<Boolean> result) {
-            if (result.getResult()) {
-                showProgress(false);
-                Intent intent = new Intent(OnBoardActivity.this, MainActivity.class);
-                startActivity(intent);
-            } else {
+            if (!result.getResult()) {
                 email.setError(getString(R.string.error_invalid_login));
                 email.requestFocus();
                 showProgress(false);
