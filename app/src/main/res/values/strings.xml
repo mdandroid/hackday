@@ -10,4 +10,18 @@
     <string name="facebook">Log in with Facebook</string>
     <string name="mypost">Log in with MyPost</string>
     <string name="no_id">Sign up</string>
+    <string name="title_activity_new_address">New Address</string>
+
+    <string name="hello_world">Hello world!</string>
+
+    <string-array name="state_array">
+            <item>VIC</item>
+            <item>NSW</item>
+            <item>ACT</item>
+            <item>SA</item>
+            <item>WA</item>
+            <item>QLD</item>
+            <item>NT</item>
+            <item>TAS</item>
+    </string-array>
 </resources>
