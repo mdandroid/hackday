@@ -11,5 +11,7 @@
     <color name="green">#32CD32</color>
     <color name="red">#FF5252</color>
     <color name="orange">#FF6D3F</color>
+    <color name="app_pri_button">#dc1928</color>
+    <color name="app_pri_button_pressed">#bb111e</color>
 
 </resources>

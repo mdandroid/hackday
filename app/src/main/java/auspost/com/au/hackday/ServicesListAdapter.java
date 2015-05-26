@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -13,35 +14,27 @@ import java.util.List;
 /**
  * Created by reidj2 on 26/05/2015.
  */
-public class FormsListAdapter extends BaseAdapter {
+public class ServicesListAdapter extends BaseAdapter {
 
     private TextView serviceName;
     private TextView serviceStatus;
+    private ImageView serviceActive;
 
     Context context;
 
     private List<Service> services = new ArrayList<>();
 
-    public FormsListAdapter(Context context) {
+    public ServicesListAdapter(Context context) {
         this.context = context;
-        update("COAN", "Green");
-        update("Mypost", "Amber");
-        update("MRSO", "Red");
-        update("Passport", "Black");
-        update("Postal Vote", "Green");
-        update("Land Title", "Red");
-        update("Mypost Card", "Amber");
-        update("Concession Card", "Red");
-        update("MPDM", "Green");
     }
 
-    public void update(String serviceName, String serviceStatus) {
+    public void update(String serviceName, String serviceStatus, boolean active) {
         for (int i = 0; i < services.size(); i++) {
             if (services.get(i).name.compareTo(serviceName) == 0) {
                 this.services.remove(i);
             }
         }
-        Service service = new Service(serviceName, serviceStatus);
+        Service service = new Service(serviceName, serviceStatus, active);
         this.services.add(service);
         notifyDataSetChanged();
     }
@@ -69,17 +62,24 @@ public class FormsListAdapter extends BaseAdapter {
         serviceName = (TextView) rowView.findViewById(R.id.textService);
         serviceName.setText(services.get(position).name);
         serviceStatus = (TextView) rowView.findViewById(R.id.textStatus);
+        serviceActive = (ImageView) rowView.findViewById(R.id.textActive);
         String status = services.get(position).status;
+        boolean active = services.get(position).active;
         if (status.equalsIgnoreCase("green")) {
-            serviceStatus.setTextColor(context.getResources().getColor(R.color.green));
+            serviceStatus.setText(R.string.status_green);
         } else if (status.equalsIgnoreCase("amber")){
-            serviceStatus.setTextColor(context.getResources().getColor(R.color.orange));
+            serviceStatus.setText(R.string.status_amber);
         } else if (status.equalsIgnoreCase("red")){
-            serviceStatus.setTextColor(context.getResources().getColor(R.color.red));
+            serviceStatus.setText(R.string.status_orange);
         } else if (status.equalsIgnoreCase("black")){
-            serviceStatus.setTextColor(context.getResources().getColor(R.color.black));
+            serviceStatus.setText(R.string.status_black);
         }
-        serviceStatus.setText(services.get(position).status);
+
+        if (active) {
+            serviceActive.setImageDrawable(context.getResources().getDrawable(R.mipmap.complete));
+        } else {
+            serviceActive.setImageDrawable(context.getResources().getDrawable(R.mipmap.incomplete));
+        }
         return rowView;
     }
 }

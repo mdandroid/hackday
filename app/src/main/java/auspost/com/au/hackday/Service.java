@@ -7,9 +7,11 @@ public class Service {
 
     public String name;
     public String status;
+    public Boolean active;
 
-    public Service(String name, String status) {
+    public Service(String name, String status, boolean active) {
         this.name = name;
         this.status = status;
+        this.active = active;
     }
 }
