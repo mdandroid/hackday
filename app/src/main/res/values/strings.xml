@@ -7,8 +7,10 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_profile">My Profile</string>
     <string name="title_activity_history">My Activity log</string>
-    <string name="facebook">Log in with Facebook</string>
-    <string name="mypost">Log in with MyPost</string>
+    <string name="facebook">REGISTER WITH FACEBOOK</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="mypost">MyPost</string>
+    <string name="register_with_email">Register with your email</string>
     <string name="no_id">Sign up</string>
 
     <string name="status_green">Good to go</string>

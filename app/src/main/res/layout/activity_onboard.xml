@@ -8,6 +8,7 @@
               android:paddingLeft="@dimen/activity_horizontal_margin"
               android:paddingRight="@dimen/activity_horizontal_margin"
               android:paddingTop="@dimen/activity_vertical_margin"
+              android:background="@color/ap_white"
               tools:context=".LoginActivity">
 
     <ProgressBar
@@ -24,12 +25,50 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:text="@string/welcome_to"
+                  android:layout_marginTop="50dp"
+                  android:textSize="30sp"
+                  android:textColor="@color/black"
+                  android:layout_gravity="center"
+                  android:gravity="center"/>
+
+        <TextView android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:text="@string/mypost"
+                  android:textSize="30sp"
+                  android:textColor="@color/ap_red"
+                  android:layout_gravity="center"
+                  android:gravity="center"/>
+
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_centerVertical="true"
+                   android:layout_marginLeft="15dp"
+                   android:layout_marginRight="15dp"
+                   android:src="@drawable/welcome"/>
+
         <Button android:id="@+id/facebook"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/ap_red"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@drawable/round_button"
                 android:textColor="@color/ap_white"
+                android:textSize="13sp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:text="@string/facebook"/>
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="14dp"
+                  android:textSize="12sp"
+                  android:layout_gravity="center"
+                  android:textColor="@color/ap_red"
+                  android:gravity="center"
+                  android:text="@string/register_with_email"/>
 
     </LinearLayout>
 
@@ -65,7 +104,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@color/ap_red"
+                android:background="@drawable/round_button"
                 android:textColor="@color/ap_white"
                 android:text="@string/action_sign_in"
                 android:textStyle="bold"/>
