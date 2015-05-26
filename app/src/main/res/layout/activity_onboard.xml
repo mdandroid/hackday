@@ -51,15 +51,24 @@
 
         <Button android:id="@+id/facebook"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button"
+                android:layout_height="35dp"
+                android:background="@drawable/round_button"
                 android:textColor="@color/ap_white"
+                android:textSize="13sp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:textSize="13sp"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="@string/facebook"/>
+
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="14dp"
+                  android:textSize="12sp"
+                  android:layout_gravity="center"
+                  android:textColor="@color/ap_red"
+                  android:gravity="center"
+                  android:text="@string/register_with_email"/>
 
     </LinearLayout>
 
@@ -95,7 +104,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/button"
+                android:background="@drawable/round_button"
                 android:textColor="@color/ap_white"
                 android:text="@string/action_sign_in"
                 android:textStyle="bold"/>
