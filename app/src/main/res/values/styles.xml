@@ -5,4 +5,7 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <color name="ap_red">#dc1928</color>
+    <color name="ap_white">#ffffff</color>
+
 </resources>
