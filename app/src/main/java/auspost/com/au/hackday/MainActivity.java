@@ -43,18 +43,15 @@ public class MainActivity extends ActionBarActivity {
         verificationPercentage();
 
         if (user.changeAddress.equalsIgnoreCase("true")) {
-            formsListAdapter.update("COAN", "Green", true);
+            formsListAdapter.update("Change of address", "Green", true);
         } else {
-            formsListAdapter.update("COAN", "Amber", false);
+            formsListAdapter.update("Change of address", "Amber", false);
         }
-        formsListAdapter.update("Mypost", "Amber", false);
-        formsListAdapter.update("MRSO", "Red", false);
-        formsListAdapter.update("Passport", "Black", false);
-        formsListAdapter.update("Postal Vote", "Green", true);
-        formsListAdapter.update("Land Title", "Red", false);
-        formsListAdapter.update("Mypost Card", "Amber", false);
-        formsListAdapter.update("Concession Card", "Red", false);
-        formsListAdapter.update("MPDM", "Green", true);
+        formsListAdapter.update("Hold mail", "Amber", false);
+        formsListAdapter.update("Apply for a bank account", "Red", false);
+        formsListAdapter.update("Apply for a passport", "Black", false);
+        formsListAdapter.update("Postal vote", "Green", true);
+        formsListAdapter.update("Update land title", "Red", false);
     }
 
     private void verificationPercentage() {
