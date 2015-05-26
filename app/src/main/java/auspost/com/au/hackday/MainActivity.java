@@ -22,6 +22,11 @@ import java.io.InputStream;
 
 public class MainActivity extends ActionBarActivity {
 
+    public static final String HOLD_MAIL = "Hold mail";
+    public static final String APPLY_FOR_A_BANK_ACCOUNT = "Apply for a bank account";
+    public static final String APPLY_FOR_A_PASSPORT = "Apply for a passport";
+    public static final String POSTAL_VOTE = "Postal vote";
+    public static final String UPDATE_LAND_TITLE = "Update land title";
     private ServicesListAdapter formsListAdapter;
 
     private ListView formListView;
@@ -47,11 +52,10 @@ public class MainActivity extends ActionBarActivity {
         } else {
             formsListAdapter.update("Change of address", "Amber", false);
         }
-        formsListAdapter.update("Hold mail", "Amber", false);
-        formsListAdapter.update("Apply for a bank account", "Red", false);
-        formsListAdapter.update("Apply for a passport", "Black", false);
-        formsListAdapter.update("Postal vote", "Green", true);
-        formsListAdapter.update("Update land title", "Red", false);
+        formsListAdapter.update(HOLD_MAIL, "Amber", false);
+        formsListAdapter.update(APPLY_FOR_A_BANK_ACCOUNT, "Red", false);
+        formsListAdapter.update(APPLY_FOR_A_PASSPORT, "Black", false);
+        formsListAdapter.update(POSTAL_VOTE, "Green", true);
     }
 
     private void verificationPercentage() {
