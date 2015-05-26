@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by reidj2 on 26/05/2015.
  */
-public class FormsListAdapter extends BaseAdapter {
+public class ServicesListAdapter extends BaseAdapter {
 
     private TextView serviceName;
     private TextView serviceStatus;
@@ -22,7 +22,7 @@ public class FormsListAdapter extends BaseAdapter {
 
     private List<Service> services = new ArrayList<>();
 
-    public FormsListAdapter(Context context) {
+    public ServicesListAdapter(Context context) {
         this.context = context;
         update("COAN", "Green");
         update("Mypost", "Amber");

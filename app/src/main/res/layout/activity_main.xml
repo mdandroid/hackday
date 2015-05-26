@@ -15,14 +15,36 @@
             android:orientation="vertical"
             android:padding="5dp">
 
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/verifiedPer"
+                    android:textSize="9pt"
+                    android:gravity="center"
+                    android:background="@drawable/shapes"
+                    android:textColor="@color/ap_white"
+                    android:layout_marginTop="20dp"/>
+
+            <ImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:id="@+id/profile_image"
+                    android:background="@color/material_blue_grey_900"
+                    android:scaleType="fitXY"/>
+
+        </LinearLayout>
         <TextView
                 android:id="@+id/mainForms"
                 android:text="@string/main_services"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20sp"
-                android:textSize="40sp"
-                android:textAlignment="center"/>
+                android:textSize="40sp"/>
 
         <RelativeLayout
                 android:layout_width="fill_parent"
