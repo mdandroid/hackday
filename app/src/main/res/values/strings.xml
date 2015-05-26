@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Identity</string>
+    <string name="app_name">Thumbprint</string>
     <string name="title_activity_main">My Identity</string>
 
     <string name="main_services">Services:</string>
