@@ -22,6 +22,11 @@ import java.io.InputStream;
 
 public class MainActivity extends ActionBarActivity {
 
+    public static final String HOLD_MAIL = "Hold mail";
+    public static final String APPLY_FOR_A_BANK_ACCOUNT = "Apply for a bank account";
+    public static final String APPLY_FOR_A_PASSPORT = "Apply for a passport";
+    public static final String POSTAL_VOTE = "Postal vote";
+    public static final String UPDATE_LAND_TITLE = "Update land title";
     private ServicesListAdapter formsListAdapter;
 
     private ListView formListView;
@@ -44,18 +49,14 @@ public class MainActivity extends ActionBarActivity {
         databaseManager = new DatabaseManager(this);
 
         if (user.changeAddress.equalsIgnoreCase("true")) {
-            formsListAdapter.update("COAN", "Green", true);
+            formsListAdapter.update("Change of address", "Green", true);
         } else {
-            formsListAdapter.update("COAN", "Amber", false);
+            formsListAdapter.update("Change of address", "Amber", false);
         }
-        formsListAdapter.update("Mypost", "Amber", false);
-        formsListAdapter.update("MRSO", "Red", false);
-        formsListAdapter.update("Passport", "Black", false);
-        formsListAdapter.update("Postal Vote", "Green", true);
-        formsListAdapter.update("Land Title", "Red", false);
-        formsListAdapter.update("Mypost Card", "Amber", false);
-        formsListAdapter.update("Concession Card", "Red", false);
-        formsListAdapter.update("MPDM", "Green", true);
+        formsListAdapter.update(HOLD_MAIL, "Amber", false);
+        formsListAdapter.update(APPLY_FOR_A_BANK_ACCOUNT, "Red", false);
+        formsListAdapter.update(APPLY_FOR_A_PASSPORT, "Black", false);
+        formsListAdapter.update(POSTAL_VOTE, "Green", true);
     }
 
     private void verificationPercentage() {
