@@ -27,7 +27,6 @@
     </string-array>
 
     <string name="status_green">Good to go</string>
-    <string name="status_amber">New Address required</string>
-    <string name="status_orange">Mobile phone number, Email address and DOB</string>
-    <string name="status_black">Mobile phone number, Email address, DOB and Facial image required</string>
+    <string name="status_extra_info">Extra info required</string>
+    <string name="status_drivers_license">Drivers license required</string>
 </resources>

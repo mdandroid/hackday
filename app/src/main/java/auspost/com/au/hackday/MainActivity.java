@@ -41,26 +41,45 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         user = getIntent().getParcelableExtra("user");
         setContentView(R.layout.activity_main);
-        formsListAdapter = new ServicesListAdapter(this.getApplicationContext());
+        formsListAdapter = new ServicesListAdapter(this.getApplicationContext(), user);
         formListView = (ListView) findViewById(R.id.list_forms);
         formListView.setAdapter(formsListAdapter);
         profilePageButton();
-        verificationPercentage();
+
+        databaseManager = new DatabaseManager(this);
 
         if (user.changeAddress.equalsIgnoreCase("true")) {
-            formsListAdapter.update("Change of address", "Green", true);
+            formsListAdapter.update("Change of address", "Extra Info", true);
         } else {
-            formsListAdapter.update("Change of address", "Amber", false);
+            formsListAdapter.update("Change of address", "Extra Info", false);
         }
-        formsListAdapter.update(HOLD_MAIL, "Amber", false);
-        formsListAdapter.update(APPLY_FOR_A_BANK_ACCOUNT, "Red", false);
-        formsListAdapter.update(APPLY_FOR_A_PASSPORT, "Black", false);
+        formsListAdapter.update(HOLD_MAIL, "Extra Info", false);
+        formsListAdapter.update(APPLY_FOR_A_BANK_ACCOUNT, "Drivers License", false);
+        formsListAdapter.update(APPLY_FOR_A_PASSPORT, "Drivers License", false);
         formsListAdapter.update(POSTAL_VOTE, "Green", true);
     }
 
     private void verificationPercentage() {
         profilePer = (TextView) findViewById(R.id.verifiedPer);
         profilePer.setText(user.verificationPercentage + "%");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        user = getIntent().getParcelableExtra("user");
+        if (databaseManager.getVerificationPercentage(user.email) != null) {
+            user.verificationPercentage = databaseManager.getVerificationPercentage(user.email);
+        }
+        if (databaseManager.getChangeAddress(user.email) != null) {
+            user.changeAddress = databaseManager.getChangeAddress(user.email);
+        }
+        verificationPercentage();
+/*        if (user.changeAddress.equalsIgnoreCase("true")) {
+            formsListAdapter.update("COAN", "Green", true);
+        } else {
+            formsListAdapter.update("COAN", "Amber", false);
+        }*/
     }
 
     @Override
@@ -93,6 +112,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
