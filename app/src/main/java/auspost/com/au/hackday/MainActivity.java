@@ -49,13 +49,13 @@ public class MainActivity extends ActionBarActivity {
         databaseManager = new DatabaseManager(this);
 
         if (user.changeAddress.equalsIgnoreCase("true")) {
-            formsListAdapter.update("Change of address", "Green", true);
+            formsListAdapter.update("Change of address", "Extra Info", true);
         } else {
-            formsListAdapter.update("Change of address", "Amber", false);
+            formsListAdapter.update("Change of address", "Extra Info", false);
         }
-        formsListAdapter.update(HOLD_MAIL, "Amber", false);
-        formsListAdapter.update(APPLY_FOR_A_BANK_ACCOUNT, "Red", false);
-        formsListAdapter.update(APPLY_FOR_A_PASSPORT, "Black", false);
+        formsListAdapter.update(HOLD_MAIL, "Extra Info", false);
+        formsListAdapter.update(APPLY_FOR_A_BANK_ACCOUNT, "Drivers License", false);
+        formsListAdapter.update(APPLY_FOR_A_PASSPORT, "Drivers License", false);
         formsListAdapter.update(POSTAL_VOTE, "Green", true);
     }
 
@@ -75,11 +75,11 @@ public class MainActivity extends ActionBarActivity {
             user.changeAddress = databaseManager.getChangeAddress(user.email);
         }
         verificationPercentage();
-        if (user.changeAddress.equalsIgnoreCase("true")) {
+/*        if (user.changeAddress.equalsIgnoreCase("true")) {
             formsListAdapter.update("COAN", "Green", true);
         } else {
             formsListAdapter.update("COAN", "Amber", false);
-        }
+        }*/
     }
 
     @Override

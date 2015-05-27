@@ -71,12 +71,10 @@ public class ServicesListAdapter extends BaseAdapter {
         boolean active = services.get(position).active;
         if (status.equalsIgnoreCase("green")) {
             serviceStatus.setText(R.string.status_green);
-        } else if (status.equalsIgnoreCase("amber")){
-            serviceStatus.setText(R.string.status_amber);
-        } else if (status.equalsIgnoreCase("red")){
-            serviceStatus.setText(R.string.status_orange);
-        } else if (status.equalsIgnoreCase("black")){
-            serviceStatus.setText(R.string.status_black);
+        } else if (status.equalsIgnoreCase("Extra Info")){
+            serviceStatus.setText(R.string.status_extra_info);
+        } else if (status.equalsIgnoreCase("Drivers License")){
+            serviceStatus.setText(R.string.status_drivers_license);
         }
 
         if (active) {
