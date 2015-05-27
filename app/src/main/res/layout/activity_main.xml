@@ -2,9 +2,6 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
                 android:paddingBottom="@dimen/activity_vertical_margin"
                 tools:context="auspost.com.au.hackday.MainActivity">
     <LinearLayout
@@ -12,38 +9,13 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:orientation="vertical"
-            android:padding="5dp">
+            android:orientation="vertical">
 
         <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/ap_red"
                 android:orientation="horizontal">
-
-            <TextView
-                    android:id="@+id/mainForms"
-                    android:text="@string/main_services"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20sp"
-                    android:textSize="40sp"
-                    android:layout_marginTop="12sp"/>
-
-            <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    />
-
-            <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/verifiedPer"
-                    android:textSize="9pt"
-                    android:gravity="center"
-                    android:background="@drawable/shapes"
-                    android:textColor="@color/ap_white"
-                    android:layout_marginTop="10dp"/>
 
             <ImageButton
                     android:layout_width="80dp"
@@ -51,6 +23,27 @@
                     android:id="@+id/profile_image"
                     android:background="@color/material_blue_grey_900"
                     android:scaleType="fitXY"/>
+
+            <TextView
+                    android:id="@+id/mainForms"
+                    android:text="@string/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20sp"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/ap_white"
+                    android:layout_marginTop="16dp"/>
+
+            <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:id="@+id/verifiedPer"
+                    android:textSize="9pt"
+                    android:paddingLeft="10dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/shapes"
+                    android:textColor="@color/ap_white"/>
 
         </LinearLayout>
 
@@ -72,7 +65,7 @@
     </LinearLayout>
 
     <TextView
-            android:text="@string/main_services"
+            android:text="@string/user_name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/layoutForms"/>

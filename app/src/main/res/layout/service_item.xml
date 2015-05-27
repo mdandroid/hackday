@@ -5,17 +5,17 @@
               android:layout_height="wrap_content">
 
     <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp">
 
     <ImageView
             android:id="@+id/textActive"
-            android:layout_width="25sp"
+            android:layout_width="15sp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:textColor="@color/black"
-            android:textSize="15sp"
             android:layout_marginTop="15sp"/>
 
         <TextView
@@ -27,7 +27,7 @@
                 android:textColor="@color/black"
                 android:gravity="left"
                 android:layout_marginLeft="5dp"
-                android:textSize="30sp"
+                android:textSize="16sp"
                 android:layout_toRightOf="@id/textActive"/>
 
         <TextView
@@ -38,8 +38,8 @@
                 android:gravity="left"
                 android:layout_marginLeft="6dp"
                 android:layout_marginRight="5dp"
-                android:textColor="@color/black"
-                android:textSize="15sp"
+                android:textColor="@color/ap_grey"
+                android:textSize="10sp"
                 android:layout_marginBottom="20sp"
                 android:layout_below="@id/textService"
                 android:layout_toRightOf="@id/textActive"/>
