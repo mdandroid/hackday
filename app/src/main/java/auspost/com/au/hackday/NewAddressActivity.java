@@ -17,6 +17,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import auspost.com.au.hackday.model.User;
+import auspost.com.au.hackday.persistence.DatabaseManager;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -24,7 +26,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class NewAddressActivity extends ActionBarActivity implements LocationListener {
@@ -36,12 +40,16 @@ public class NewAddressActivity extends ActionBarActivity implements LocationLis
     private LatLng defaultLatLng = new LatLng(-37.824044, 144.950479);
     private LatLng newLatLng = new LatLng(-37.812345, 144.969715);
     private TextView locationTv;
+    private User user;
+    private DatabaseManager databaseManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_full);
         locationTv = (TextView) findViewById(R.id.address);
+        user = getIntent().getParcelableExtra("user");
+        databaseManager = new DatabaseManager(this);
         /*spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.state_array, android.R.layout.simple_spinner_item);
@@ -132,6 +140,10 @@ public class NewAddressActivity extends ActionBarActivity implements LocationLis
 
     private void gotoHistory(){
         Intent intent = new Intent(this, HistoryActivity.class);
+        Map<String, String> user1 = new HashMap<>();
+        user1.put(DatabaseManager.VER, "30");
+        user1.put(DatabaseManager.CHADD, "true");
+        databaseManager.save(user.email, user1);
         startActivity(intent);
         finish();
     }

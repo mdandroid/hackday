@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import auspost.com.au.hackday.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +21,15 @@ public class ServicesListAdapter extends BaseAdapter {
     private TextView serviceName;
     private TextView serviceStatus;
     private ImageView serviceActive;
+    private User user;
 
     Context context;
 
     private List<Service> services = new ArrayList<>();
 
-    public ServicesListAdapter(Context context) {
+    public ServicesListAdapter(Context context, User user) {
         this.context = context;
+        this.user = user;
     }
 
     public void update(String serviceName, String serviceStatus, boolean active) {
@@ -86,6 +89,7 @@ public class ServicesListAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Intent intent = new Intent(context, NewAddressActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("user", user);
                 context.startActivity(intent);
             }
         });

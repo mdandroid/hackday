@@ -36,11 +36,12 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         user = getIntent().getParcelableExtra("user");
         setContentView(R.layout.activity_main);
-        formsListAdapter = new ServicesListAdapter(this.getApplicationContext());
+        formsListAdapter = new ServicesListAdapter(this.getApplicationContext(), user);
         formListView = (ListView) findViewById(R.id.list_forms);
         formListView.setAdapter(formsListAdapter);
         profilePageButton();
-        verificationPercentage();
+
+        databaseManager = new DatabaseManager(this);
 
         if (user.changeAddress.equalsIgnoreCase("true")) {
             formsListAdapter.update("COAN", "Green", true);
@@ -60,6 +61,24 @@ public class MainActivity extends ActionBarActivity {
     private void verificationPercentage() {
         profilePer = (TextView) findViewById(R.id.verifiedPer);
         profilePer.setText(user.verificationPercentage + "%");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        user = getIntent().getParcelableExtra("user");
+        if (databaseManager.getVerificationPercentage(user.email) != null) {
+            user.verificationPercentage = databaseManager.getVerificationPercentage(user.email);
+        }
+        if (databaseManager.getChangeAddress(user.email) != null) {
+            user.changeAddress = databaseManager.getChangeAddress(user.email);
+        }
+        verificationPercentage();
+        if (user.changeAddress.equalsIgnoreCase("true")) {
+            formsListAdapter.update("COAN", "Green", true);
+        } else {
+            formsListAdapter.update("COAN", "Amber", false);
+        }
     }
 
     @Override
@@ -92,6 +111,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                intent.putExtra("user", user);
                 startActivity(intent);
             }
         });
